@@ -12,11 +12,11 @@ class WnCC
         {
             if(s.charAt(i) == 'm')
             {
-                minutes = Integer.parseInt(s.substring(d,i));//converts the string before m into time in minutes
+                minutes = Integer.parseInt(s.substring(d,i)); //converts the string before m into time in minutes
                 d = i+1;
             }
             else if(s.charAt(i) == 's')
-                seconds = Double.parseDouble(s.substring(d,i));//converts the string before s into time in seconds
+                seconds = Double.parseDouble(s.substring(d,i)); //converts the string before s into time in seconds
         }
         seconds = seconds + minutes*60;
     }
@@ -26,10 +26,12 @@ class WnCC
         File input = new File("D:\\IITB\\WnCC\\timestat.txt");
         Scanner sc = new Scanner(input);
         String input_string = "";
+        
         int real_runs = 0, user_runs = 0, sys_runs = 0;
         double real_tot = 0, real_avg = 0, real_sum_sq = 0;
         double user_tot = 0, user_avg = 0, user_sum_sq = 0;
         double sys_tot = 0, sys_avg = 0, sys_sum_sq = 0;
+        
         while(sc.hasNext()) //loop will go on executing till there is input available in the file
         {
             input_string = sc.next();
@@ -59,6 +61,7 @@ class WnCC
                 sys_sum_sq += seconds*seconds;
             }
         }
+        
         real_avg = real_tot/real_runs;
         double real_var = real_sum_sq/real_runs - real_avg*real_avg;
         double real_std_dev = Math.sqrt(real_var);
@@ -73,6 +76,7 @@ class WnCC
         
         sc = new Scanner(input);
         int real_runs_in_range = 0, user_runs_in_range = 0, sys_runs_in_range = 0;
+        
         while(sc.hasNext())
         {
             input_string = sc.next();
@@ -99,6 +103,7 @@ class WnCC
                     sys_runs_in_range++;
             }
         }
+        
         System.out.println(" Number of runs : " + real_runs);
         System.out.println("\n Average Time statistics");
         System.out.println(" real " + real_avg + "   \t user " + user_avg + "\t sys " + sys_avg);
